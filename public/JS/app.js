@@ -10,7 +10,7 @@ SmartSociety.prototype.addMember = function(){
 
 	var Name = document.getElementById("Name").value;
 	var Email = document.getElementById("Email").value;
-	var Address = ""//document.getElementById("Address").value;
+	var Address = document.getElementById("Address").value;
 	var Contact = document.getElementById("Contact").value;
 	//var key = ref.push().key;
 	//Window.alert(key);
