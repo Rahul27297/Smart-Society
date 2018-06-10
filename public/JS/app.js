@@ -1,61 +1,34 @@
 var ref = firebase.database().ref("/")
 
-/*function addMember() {
-	var email = true; 
-	var id = true;
-	var notices = true;
-	var phone = true;
-	var society = true;
-	var type = true;
-	var memberName = "Kaivalya";
+// Event listener for Add Member button
+function SmartSociety(){
+	var addmemberbtn = document.getElementById("addsociety");
+	addmemberbtn.addEventListener('click',this.addMember.bind(this));
+};
 
-	ref.child("Members"+"/"+memberName).update({
+SmartSociety.prototype.addMember = function(){
+
+	var Name = document.getElementById("Name").value;
+	var Email = document.getElementById("Email").value;
+	var Address = ""//document.getElementById("Address").value;
+	var Contact = document.getElementById("Contact").value;
+	//var key = ref.push().key;
+	//Window.alert(key);
+	console.log("hello")
 	
-		applications:true,
-		email:email,
-		id:id,
-		notices:notices,
-		phone:phone,
-		society:society,
-		type:type
+	var soc = {
+		name: Name,
+		email: Email,
+		address: Address,
+		contact: Contact,
+	};
+
+	ref.child("Society").update(soc);
 	
-})}*/
+	
+	
+};
 
-function addSociety(address,contact,email) {
-
-	//var address = true;
-	//var contact = true;
-	//var email = true;
-	var uniqueID = 12234;
-	var name = "sankul";
-	console.log("test")
-	ref.child("Society").update({
-		address:address,
-		contact:contact,
-		email:email,
-		uniqueID:uniqueID,
-		name:name
-
-	})}
-
-function onClick() {
-	console.log("hi")
-	var address = document.getElementById('address')
-	var contact = document.getElementById('contact')
-	var email = document.getElementById('email')
-
-	console.log(address.value)
-	console.log(contact.value)
-	console.log(email.value)
-
-	addSociety(address.value,contact.value,email.value)
-
-
-
-}
-
-//addMember()
-//addSociety()
-
-
-
+window.onload = function(){
+	window.SmartSociety = new SmartSociety();
+};
