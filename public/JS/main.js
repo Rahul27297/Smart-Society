@@ -1,3 +1,50 @@
+var Password = {
+ 
+  _pattern : /[a-zA-Z0-9_\-\+\.]/,
+  
+  
+  _getRandomByte : function()
+  {
+    // http://caniuse.com/#feat=getrandomvalues
+    if(window.crypto && window.crypto.getRandomValues) 
+    {
+      var result = new Uint8Array(1);
+      window.crypto.getRandomValues(result);
+      return result[0];
+    }
+    else if(window.msCrypto && window.msCrypto.getRandomValues) 
+    {
+      var result = new Uint8Array(1);
+      window.msCrypto.getRandomValues(result);
+      return result[0];
+    }
+    else
+    {
+      return Math.floor(Math.random() * 256);
+    }
+  },
+  
+  generate : function(length)
+  {
+    return Array.apply(null, {'length': length})
+      .map(function()
+      {
+        var result;
+        while(true) 
+        {
+          result = String.fromCharCode(this._getRandomByte());
+          if(this._pattern.test(result))
+          {
+            return result;
+          }
+        }        
+      }, this)
+      .join('');  
+  }    
+    
+};
+
+
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 var ref = firebase.database().ref("/Members/")
 var auth = firebase.auth();
@@ -32,14 +79,28 @@ SmartSociety.prototype.addMember = function(){
 	};
 	var emailAddress = Email;
 	console.log(emailAddress)
-
-	auth.sendPasswordResetEmail(emailAddress).then(function() {
-	  // Email sent.
-	  console.log("Success")
-	}).catch(function(error) {
-	  // An error happened.
-	  console.log(error)
+	password = Password.generate(10);
+	console.log(password)
+	firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // ...
 	});
+	console.log("created")
+
+	setTimeout(function(){
+		auth.sendPasswordResetEmail(emailAddress).then(function() {
+		  // Email sent.
+		  console.log("Success")
+		}).catch(function(error) {
+		  // An error happened.
+		  console.log(error)
+		});
+    
+	}, 5000);
+
+	
 	//ref.child("Members" + "/" + Email).update(member)
 	//console.log(Email);
 	ref.push(member);
