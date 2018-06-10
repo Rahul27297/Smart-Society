@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My app | admin page</title>
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+	<script>
+
+	  var config = {
+	    apiKey: "AIzaSyBN9xAxEZKpOfsIuwPuHo2cPPVMfq9qco8",
+	    authDomain: "test-society-51be7.firebaseapp.com",
+	    databaseURL: "https://test-society-51be7.firebaseio.com",
+	    projectId: "test-society-51be7",
+	    storageBucket: "test-society-51be7.appspot.com",
+	    messagingSenderId: "421731650346"
+	  };
+	  firebase.initializeApp(config);
+
+	</script>
+
+
+</head>
+<body>
+	Hello! This is Admin login
+	<br>
+	<br>
+	Address : <input type="text" id="address" name="cctextbox">
+	<br>
+	<br>
+	Contact : <input type="text" id="contact" name="cctextbox">
+	<br>
+	<br>
+	Email : <input type="text" id="email" name="cctextbox">
+	<br>
+	<br>
+	<input type="submit" name="register" value="Register Society" onclick="onClick()">	 
+	<br>
+	<br>
+	<form action="index.html">
+	<input type="submit" name="back" value="back">
+	</form>
+	<script type="text/javascript" src="./JS/app.js"></script>
+
+</body>
+</html>
