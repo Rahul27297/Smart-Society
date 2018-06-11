@@ -4,7 +4,6 @@ var ref = firebase.database().ref("/")
 // Event listener for Add Member button
 function SmartSociety(){
 	var addmemberbtn = document.getElementById("addsociety");
-	console.log("this")
 	if(addmemberbtn){
 		addmemberbtn.addEventListener('click',this.addSociety.bind(this));
 

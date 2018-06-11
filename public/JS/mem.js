@@ -95,7 +95,7 @@ SmartSociety.prototype.addMember = function(){
 	  //console.log(errorMessage)
 	  // ...
 	});
-	//console.log(errorCode)
+	console.log(ifEmailAlreadyExists)
 	
 
 	setTimeout(function(){
