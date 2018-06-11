@@ -1,12 +1,17 @@
 var ref = firebase.database().ref("/")
+//console.log("hello")
 
 // Event listener for Add Member button
 function SmartSociety(){
 	var addmemberbtn = document.getElementById("addsociety");
-	addmemberbtn.addEventListener('click',this.addMember.bind(this));
+	console.log("this")
+	if(addmemberbtn){
+		addmemberbtn.addEventListener('click',this.addSociety.bind(this));
+
+	}
 };
 
-SmartSociety.prototype.addMember = function(){
+SmartSociety.prototype.addSociety = function(){
 
 	var Name = document.getElementById("Name").value;
 	var Email = document.getElementById("Email").value;
@@ -14,7 +19,7 @@ SmartSociety.prototype.addMember = function(){
 	var Contact = document.getElementById("Contact").value;
 	//var key = ref.push().key;
 	//Window.alert(key);
-	console.log("hello")
+	//console.log("hello")
 	
 	var soc = {
 		name: Name,
