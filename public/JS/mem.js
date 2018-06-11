@@ -83,50 +83,43 @@ SmartSociety.prototype.addMember = function(){
 	var emailAddress = Email;
 	console.log(emailAddress)
 	password = Password.generate(10);
-	console.log(password)
-	firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
+	console.log(password);
+	var ifEmailAlreadyExists = "";
+	var x = firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
 	  // Handle Errors here.
 	  var errorCode = error.code;
+	  //console.log(errorCode)
 	  var errorMessage = error.message;
+	  ifEmailAlreadyExists = errorCode;
+	  //console.log(errorCode)
+	  //console.log(errorMessage)
 	  // ...
 	});
-	console.log("created")
+	//console.log(errorCode)
+	
 
 	setTimeout(function(){
-		auth.sendPasswordResetEmail(emailAddress).then(function() {
-		  // Email sent.
-		  console.log("Success")
-		}).catch(function(error) {
-		  // An error happened.
-		  console.log(error)
+		if(ifEmailAlreadyExists!="auth/email-already-in-use"){
+			auth.sendPasswordResetEmail(emailAddress).then(function() {
+			  // Email sent.
+			  ref.push(member);
+
+			  console.log("Success")
+			}).catch(function(error) {
+			  // An error happened.
+			  console.log(error)
 		});
+		}
+		else{
+			console.log("User exists")
+		}
     
 	}, 5000);
-
-	
-	//ref.child("Members" + "/" + Email).update(member)
-	//console.log(Email);
-	ref.push(member);
 	
 	
 };
 
 
-/*SmartSociety.prototype.getMembers = function(){
-	var table = document.getElementById("table");
-	ref.on('value',function(snapshot){
-		snapshot.forEach(function(childsnapshot){
-			var Name = childsnapshot.val().Name;
-			var Address = childsnapshot.val().Address;
-			var Contact = childsnapshot.val().Contact;
-			var Email = childsnapshot.val().Email;
-			var Type = childsnapshot.val().type;
-			var newRow = table.insertRow(table.length);
-			var cell = newRow.insertCell(0);
-			cell.innerHTML = Name;
-		});
-	});
-};*/
 
 window.onload = function(){
 	window.SmartSociety = new SmartSociety();
