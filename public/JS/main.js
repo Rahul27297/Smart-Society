@@ -70,6 +70,9 @@ SmartSociety.prototype.addMember = function(){
 	else if(document.getElementById("Tenant").checked){
 		var type = "Tenant";
 	}
+	else if(document.getElementById("Admin").checked){
+		var type = "Admin";
+	}
 	var member = {
 		Name: Name,
 		Email: Email,
