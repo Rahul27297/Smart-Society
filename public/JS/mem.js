@@ -78,7 +78,49 @@ SmartSociety.prototype.addMember = function(){
 		Email: Email,
 		Address: Address,
 		Contact: Contact,
-		Type: type
+		Type: type,
+		Bookings: {
+			TableTennis:{
+				date:"",
+				time:""
+			},
+			Swimming:{
+				date:"",
+				time:""
+			},
+			Basketball:{
+				date:"",
+				time:""
+			},
+			LawnTennis:{
+				date:"",
+				time:""
+			},
+			ClubHouse:{
+				date:"",
+				time:""
+			},
+			Gym:{
+				date:"",
+				time:""
+			},
+			Snooker:{
+				date:"",
+				time:""
+			},
+			Badminton:{
+				date:"",
+				time:""
+			},
+			Library:{
+				date:"",
+				time:""
+			},
+			AmphiTheatre:{
+				date:"",
+				time:""
+			}
+		}
 	};
 	var emailAddress = Email;
 	console.log(emailAddress)
@@ -96,9 +138,9 @@ SmartSociety.prototype.addMember = function(){
 	  // ...
 	});
 	console.log(ifEmailAlreadyExists)
-	
+	ref.push(member)
 
-	setTimeout(function(){
+	/*setTimeout(function(){
 		if(ifEmailAlreadyExists!="auth/email-already-in-use"){
 			auth.sendPasswordResetEmail(emailAddress).then(function() {
 			  // Email sent.
@@ -114,7 +156,7 @@ SmartSociety.prototype.addMember = function(){
 			console.log("User exists")
 		}
     
-	}, 5000);
+	}, 5000);*/
 	
 	
 };
