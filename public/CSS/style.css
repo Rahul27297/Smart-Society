@@ -10,3 +10,11 @@
 #updatefacilityform{
 	padding: 20px;
 }
+
+#addmember,
+#listmember{
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+
+}
