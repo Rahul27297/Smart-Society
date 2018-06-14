@@ -1,9 +1,10 @@
 //console.log("hello")
-var ref = firebase.database().ref("/Society/facilities");
+var ref = firebase.database().ref("/Society/services/facilities");
 // Event listener for Add Member button
 function SmartSociety1(){
 	//facility addition code
 	//window.alert(document.title);
+	var updatefacilityname = document.getElementById("updatefacilityname");
 	var bookingrequired = document.getElementById("bookingrequired");
 	bookingrequired.style.display = "none";
 	var facilityname = document.getElementById("facilityname");
@@ -30,7 +31,7 @@ function SmartSociety1(){
 					var option = document.createElement('option');
 					option.value = childSnapshot.val().name;
 					option.innerHTML = childSnapshot.val().name;
-					facilityname.appendChild(option);
+					updatefacilityname.appendChild(option);
 			});
 		})
 
@@ -38,7 +39,6 @@ function SmartSociety1(){
 		//bootbox.alert("Facility added successfully");
 		var e = document.getElementById("status");
 		var status = e.options[e.selectedIndex].value;
-		window.alert(status);
 		var facility = {
 			name: facilityname.value,
 			facility_status: status,
@@ -52,23 +52,23 @@ function SmartSociety1(){
 
 	//facility update code
 	var updatefacilitybtn = document.getElementById("updatefacility");
-	var faciliyname = document.getElementById("facilityname");
+	//var updatefacilityname = document.getElementById("updatefacilityname"); Line shifted to the top
 	var facilitynamedisplay = document.getElementById("facilitynamedisplay");
 	var updatefacilityform = document.getElementById("updatefacilityform");
 	updatefacilityform.style.display = "none";
 
-	var bookingrequired = document.getElementById("bookingrequired");
-	var bookingrequirement = document.getElementById("bookingrequirement");
+	var updatebookingrequired = document.getElementById("updatebookingrequired");
+	var updatebookingrequirement = document.getElementById("updatebookingrequirement");
 
-	bookingrequirement.addEventListener('change',function(){
-		if(facilityname.value != "" && bookingrequirement.value == "yes"){
+	updatebookingrequirement.addEventListener('change',function(){
+		if(updatefacilityname.value != "" && updatebookingrequirement.value == "yes"){
 			bookingrequired.style.display = "block";
-			var bookingstarttime = document.getElementById("bookingstarttime").value;
-			var bookingendtime = document.getElementById("bookingendtime").value;
-			var slotduration = document.getElementById("slotduration").value;
+			var updatebookingstarttime = document.getElementById("updatebookingstarttime").value;
+			var updatebookingendtime = document.getElementById("updatebookingendtime").value;
+			var updateslotduration = document.getElementById("updateslotduration").value;
 		}
-		else if(bookingrequirement.value == "no"){
-			bookingrequired.style.display = "none";
+		else if(updatebookingrequirement.value == "no"){
+			updatebookingrequired.style.display = "none";
 		}
 	});
 
@@ -78,29 +78,30 @@ function SmartSociety1(){
 		//facilitynamedisplay
 		ref.on('value',function(snapshot){
 			var found=0;
-			//window.alert(snapshot.val().name);
 			snapshot.forEach(function(childSnapshot){
-				if((facilityname.value).localeCompare(childSnapshot.val().name) == 0){
+				if((updatefacilityname.value).localeCompare(childSnapshot.val().name) == 0){
+
 					//window.alert(childSnapshot.val().name);
 					updatefacilityform.style.display = "block";
 					facilitynamedisplay.innerHTML = childSnapshot.val().name;
-					bookingrequirement.value = childSnapshot.val().booking_requirement;
+					updatebookingrequirement.value = childSnapshot.val().booking_requirement;
 
-					if((bookingrequirement.value).localeCompare("yes") == 0){
-						var bookingstarttime = document.getElementById("bookingstarttime").value;
-						var bookingendtime = document.getElementById("bookingendtime").value;
-						var slotduration = document.getElementById("slotduration").value;
-						var e = document.getElementById("status");
-						var status = e.options[e.selectedIndex].value;
+					if((updatebookingrequirement.value).localeCompare("yes") == 0){
+						var updatebookingstarttime = document.getElementById("updatebookingstarttime").value;
+						var updatebookingendtime = document.getElementById("updatebookingendtime").value;
+						var updateslotduration = document.getElementById("updateslotduration").value;
+						var e = document.getElementById("updatestatus");
+						var updatestatus = e.options[e.selectedIndex].value;
 
-						bookingstarttime.value = childSnapshot.val().booking_start;
-						bookingendtime.value = childSnapshot.val().booking_end;
+						updatebookingstarttime.value = childSnapshot.val().booking_start;
+						updatebookingendtime.value = childSnapshot.val().booking_end;
 
-						slotduration.value = childSnapshot.val().slot_duration;
+						updateslotduration.value = childSnapshot.val().slot_duration;
 						e.value = childSnapshot.val().facility_status;
 					}
 					else{
-						bookingrequired.style.display = "none";
+						//window.alert(updatefacilityname.value);
+						updatebookingrequired.style.display = "none";
 					}
 
 					found = 1;
@@ -114,17 +115,17 @@ function SmartSociety1(){
 
 	var updateFacilitybtn = document.getElementById("updatefacilitybtn");
 		updateFacilitybtn.addEventListener('click',function(){
-			var e = document.getElementById("status");
-			var status = e.options[e.selectedIndex].value;
-			var facility = {
-				name: facilityname.value,
-				facility_status: status,
-				booking_requirement: bookingrequirement.value,
-				booking_start: bookingstarttime.value,
-				booking_end: bookingendtime.value,
-				slot_duration: slotduration.value
+			var e = document.getElementById("updatestatus");
+			var updatestatus = e.options[e.selectedIndex].value;
+			var updatefacility = {
+				name: updatefacilityname.value,
+				facility_status: updatestatus,
+				booking_requirement: updatebookingrequirement.value,
+				booking_start: updatebookingstarttime.value,
+				booking_end: updatebookingendtime.value,
+				slot_duration: updateslotduration.value
 			};
-			ref.child(facilityname.value).set(facility);
+			ref.child(updatefacilityname.value).set(updatefacility);
 	});
 
 }
