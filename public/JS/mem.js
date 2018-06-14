@@ -74,6 +74,8 @@ SmartSociety.prototype.addMember = function(){
 		var type = "Admin";
 	}
 	var member = {
+		Applications: true,
+		Notices: true,
 		Name: Name,
 		Email: Email,
 		Address: Address,

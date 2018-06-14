@@ -1,5 +1,11 @@
 /*basic settings */
 
+.checkbox
+{
+  display: inline-block;
+}
+
+
 a:focus {
 	outline: none !important;
 	outline-offset: none !important;
