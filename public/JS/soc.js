@@ -6,8 +6,14 @@ var ref1 = firebase.database().ref("/Society/services/facilities/")
 function SmartSociety(){
 	var addsocietybtn = document.getElementById("addsociety");
 	var bookingrequired = document.getElementById("bookingrequired");
+	var tabletennis = document.getElementById("tabletennis");
+	var yesornott = document.getElementById("yesornott");
+	yesornott.addEventListener('change',this.onSelectChanged.bind(this));
+	bookingrequired.style.display = "none";
+	if(addsocietybtn){
+		addsocietybtn.addEventListener('click',this.addSociety.bind(this));
 
-
+	}
 };
 
 SmartSociety.prototype.addSociety = function(){
@@ -16,11 +22,6 @@ SmartSociety.prototype.addSociety = function(){
 	var Email = document.getElementById("Email").value;
 	var Address = document.getElementById("Address").value;
 	var Contact = document.getElementById("Contact").value;
-	var facilities = document.getElementById("facility").value;
-	var notices = document.getElementById("notices").value;
-
-	var applications = document.getElementById("applications").value;
-	console.log(facilities,notices,applications);
 	//var key = ref.push().key;
 	//Window.alert(key);
 	//console.log("hello")
