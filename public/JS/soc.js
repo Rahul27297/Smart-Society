@@ -1,11 +1,17 @@
 var ref = firebase.database().ref("/")
+var ref1 = firebase.database().ref("/Society/services/facilities/")
 //console.log("hello")
 
 // Event listener for Add Member button
 function SmartSociety(){
-	var addmemberbtn = document.getElementById("addsociety");
-	if(addmemberbtn){
-		addmemberbtn.addEventListener('click',this.addSociety.bind(this));
+	var addsocietybtn = document.getElementById("addsociety");
+	var bookingrequired = document.getElementById("bookingrequired");
+	var tabletennis = document.getElementById("tabletennis");
+	var yesornott = document.getElementById("yesornott");
+	yesornott.addEventListener('change',this.onSelectChanged.bind(this));
+	bookingrequired.style.display = "none";
+	if(addsocietybtn){
+		addsocietybtn.addEventListener('click',this.addSociety.bind(this));
 
 	}
 };

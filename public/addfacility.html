@@ -13,6 +13,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
 
 
 <script src="./clockpicker/dist/bootstrap-clockpicker.min.js"></script>
@@ -34,79 +36,25 @@
   firebase.initializeApp(config);
 </script> 
 </head>
-<body>
+<body onload="SmartSociety1()">
   <div class="container" >
     <div class="row">
       <div class="col-sm-12 card" id="form-container">
-    <div class="card-header">Society Addition Form  </div>
+    <div class="card-header">Facility Addition Form </div>
   <div id="member-form">
    <div class="row">
-    <div class="col-sm-12">
-     <label>Chairman Information</label>
-     </div>
    </div>
-  <hr>
-    <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="Name" placeholder="Name">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="Email" placeholder="abc@abc.com">
-    </div>
-  </div>
-  
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="Address" placeholder="A1105">
-    </div>
-  </div>
-
-
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Contact No.</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="Contact" placeholder="9999999999">
-    </div>
-  </div>
-
-  
-  <!--div class="form-group row">
-    <div class="col-sm-2">Checkbox</div>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1">
-        <label class="form-check-label" for="gridCheck1">
-          Example checkbox
-        </label>
-      </div>
-    </div>
-  </div-->
-  <br>
-  <div class="row">
-    <div class="col-sm-6">
-     <label>Society Services</label>
-     </div>
-   </div>
-  <hr>
   <div>
-   <div class="form-group row">
-    <div class="col-sm-4">
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="tabletennis">
-        <label class="custom-control-label" for="tabletennis">Table - Tennis</label>
+   <div class="row">
+    <div class="col-sm-7">
+       <div class="form-group">
+        <label for="exampleFormControlInput1">Facility Name: </label>
+        <input type="email" class="form-control" id="facilityname" placeholder="Table Tennis">
       </div>
       </div>
-      <div class = "col-sm-4 form-group">
+      <div class = "col-sm-5 form-group">
           <label>Booking requirement:</label>
-        </div>
-        <div class = "col-sm-4 form-group">
-       <select name="bookingrequirement" class="form-control" id="yesornott">
+       <select name="bookingrequirement" class="form-control" id="bookingrequirement">
         <option value="yes">Yes</option>
         <option selected value="no">No</option>
       </select>
@@ -116,56 +64,52 @@
 <div id="bookingrequired">
   <div class="form-group row">
     
-    <div class="col-sm-5 ">
+    <div class="col-sm-4 ">
       <label>Booking Starts from: </label>
       <div class="input-group clockpicker">
     <input type="text" class="form-control" value="09:30" id = "bookingstarttime">
       </div>  
     </div>
 
-      <div class="col-sm-5 offset-sm-2">
+      <div class="col-sm-4">
       <label>Booking Available till: </label>
       <div class="input-group clockpicker">
     <input type="text" class="form-control" value="09:30" id = "bookingendtime">
       </div>
     </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-5">
+    
+      <div class="col-sm-4">
       <label>Slot duration: </label>
       <div class="input-group clockpicker">
     <input type="text" class="form-control" value="01:00" id = "slotduration">
       </div>
     </div>
-    <div class="col-sm-5 offset-sm-2 form-group">
-      <label>Current Status: </label>
-      <select class="form-control" id = "status">
-        <option value="usable">Usable</option>
-        <option value="undermaintainence">Under Maintainence</option>
-      </select>
-    </div>
-    
   </div>
-  <hr>
 </div>
 </div>
 
+   <div class="form-group row">
+    <div class="col-sm-10">
+      <label>Current Status: </label>
+      <select class="form-control" id = "status">
+        <option value="usable" selected>Usable</option>
+        <option value="undermaintainence">Under Maintainence</option>
+      </select>
+      
+    </div>
+    </div>
+
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary" id="addsociety">Add Sociey</button>
+      <button type="submit" class="btn btn-primary" id="addfacility">Add Facility</button>
     </div>
   </div>
   
 </div>
 </div>
 </div>
-<div class="row" style="margin-top: 10px">
-    <form action="index.html">
-      <button type="submit" class="btn btn-primary" id="getmembers">Back</button>
-    </div>
-    </form>
 </div>
-<script src="./JS/soc.js"></script>
+<script src="./JS/addfacility.js"></script>
 
 <script type="text/javascript">
 $('.clockpicker').clockpicker({
