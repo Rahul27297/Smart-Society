@@ -1,5 +1,10 @@
 /*basic settings */
-
+#addnoticebtn,
+#viewnoticebtn{
+  display: inline-block;
+  float: left;
+  margin: 10px;
+}
 .checkbox
 {
   display: inline-block;

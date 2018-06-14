@@ -28,9 +28,10 @@
   </script> 
 </head>
 <body>
+  <!-- You will not be able to see this text. -->
+
 <div class="container">
   <h1>Add Notice</h1>
- <form>
   <div class="form-group">
     <h4><label for="inputlg" >Type your notice here</label></h4>
     <label for="inputlg1" >Subject</label>
@@ -63,9 +64,11 @@
     </div>
     <div>
       <button type="submit" class="btn btn-primary" id="addnoticebtn">Submit Notice</button>
+      <form action="viewnotice.html">
+      <button type="submit" class="btn btn-primary" id="viewnoticebtn">View Past Notices</button>
+      </form>
     </div>
   </div>
-</form>
 </div>
 
 <script type="text/javascript" src="./JS/notice.js"></script>

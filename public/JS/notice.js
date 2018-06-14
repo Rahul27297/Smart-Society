@@ -6,6 +6,8 @@ window.onload = function(){
 
 function SmartSociety(){
 	var addnotice = document.getElementById("addnoticebtn");
+	var viewnotice = document.getElementById("viewnoticebtn");
+
 	addnotice.addEventListener('click',this.addNotice.bind(this));
 
 }
@@ -40,6 +42,8 @@ SmartSociety.prototype.addNotice = function(){
 
 	
 };
+
+
 
 $(function() {
   $('input[type=file]').change(function(){
