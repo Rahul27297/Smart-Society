@@ -7,6 +7,7 @@ function SmartSociety(){
 	var addmemberbtn = document.getElementById("addmember");
 	var displayarea = document.getElementById("displayarea");
 	var facility = document.getElementById("facility");
+	var notices = document.getElementById("notices");
 
 	addmemberbtn.addEventListener('click',this.addMember.bind(this));
 
@@ -14,6 +15,7 @@ function SmartSociety(){
 	displayarea.style.height = "100%";
 
 	facility.addEventListener('click',this.addFacility.bind(this));
+	notices.addEventListener('click',this.addNotice.bind(this));
 	//updatefacility.addEventListener('click',this.updateFacility.bind(this));
 }
 
@@ -37,3 +39,8 @@ SmartSociety.prototype.addFacility = function(){
 	bookingrequired.style.display = "none";*/
 	//SmartSociety1();
 };
+
+SmartSociety.prototype.addNotice = function(){
+	displayarea.innerHTML = '<object type="text/html" data="notices.html" height="100%" width="100%"></object>';
+	displayarea.style.height = "100%";
+}
