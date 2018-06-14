@@ -5,11 +5,6 @@ var ref1 = firebase.database().ref("/Society/services/facilities/")
 // Event listener for Add Member button
 function SmartSociety(){
 	var addsocietybtn = document.getElementById("addsociety");
-	var bookingrequired = document.getElementById("bookingrequired");
-	var tabletennis = document.getElementById("tabletennis");
-	var yesornott = document.getElementById("yesornott");
-	yesornott.addEventListener('change',this.onSelectChanged.bind(this));
-	bookingrequired.style.display = "none";
 	if(addsocietybtn){
 		addsocietybtn.addEventListener('click',this.addSociety.bind(this));
 
@@ -22,15 +17,35 @@ SmartSociety.prototype.addSociety = function(){
 	var Email = document.getElementById("Email").value;
 	var Address = document.getElementById("Address").value;
 	var Contact = document.getElementById("Contact").value;
+	var services = document.getElementById("services");
+	var notices = document.getElementById("notices");
+	var facilities = document.getElementById("facilities");
 	//var key = ref.push().key;
 	//Window.alert(key);
 	//console.log("hello")
+	var forservices = false;
+	var fornotices = false;
+	var forfacilites = false;
+
+	if(services.checked == true){
+		forservices = true;
+	}
+	if(notices.checked == true){
+		fornotices = true;
+	}
+	if(facilities.checked == true){
+		forfacilites = true;
+	}
+//	var forservices =
 	
 	var soc = {
 		name: Name,
 		email: Email,
 		address: Address,
 		contact: Contact,
+		services: forservices,
+		notices: fornotices,
+		facilities: forfacilites
 	};
 
 	ref.child("Society").update(soc);
