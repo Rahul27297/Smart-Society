@@ -6,16 +6,15 @@ window.onload = function(){
 function SmartSociety(){
 	var addmemberbtn = document.getElementById("addmember");
 	var displayarea = document.getElementById("displayarea");
-	var addfacility = document.getElementById("addfacility");
-	var updatefacility = document.getElementById("updatefacility");
+	var facility = document.getElementById("facility");
 
 	addmemberbtn.addEventListener('click',this.addMember.bind(this));
 
 	displayarea.innerHTML = '<object type="text/html" data="addmem.html" height="100%" width="100%"></object>';
 	displayarea.style.height = "100%";
 
-	addfacility.addEventListener('click',this.addFacility.bind(this));
-	updatefacility.addEventListener('click',this.updateFacility.bind(this));
+	facility.addEventListener('click',this.addFacility.bind(this));
+	//updatefacility.addEventListener('click',this.updateFacility.bind(this));
 }
 
 SmartSociety.prototype.addMember = function(){
