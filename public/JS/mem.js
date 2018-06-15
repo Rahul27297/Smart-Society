@@ -51,7 +51,7 @@ var auth = firebase.auth();
 
 // Event listener for Add Member button
 function SmartSociety(){
-	var addmemberbtn = document.getElementById("addmember");
+	var addmemberbtn = document.getElementById("addmemberbtn");
 	addmemberbtn.addEventListener('click',this.addMember.bind(this));
 };
 
@@ -147,18 +147,20 @@ SmartSociety.prototype.addMember = function(){
 			auth.sendPasswordResetEmail(emailAddress).then(function() {
 			  // Email sent.
 			  ref.push(member);
-
+			  window.alert("Added Member Successfully")
 			  console.log("Success")
 			}).catch(function(error) {
 			  // An error happened.
+			  window.alert(error.message)
 			  console.log(error)
 		});
 		}
 		else{
 			console.log("User exists")
+			window.alert("User with specified Email ID already exists")
 		}
     
-	}, 5000);
+	}, 1500);
 	
 	
 };

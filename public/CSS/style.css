@@ -11,7 +11,7 @@
 	padding: 20px;
 }
 
-#addmember,
+#addmemberbtn,
 #listmember{
     display: inline-block;
     vertical-align: top;
