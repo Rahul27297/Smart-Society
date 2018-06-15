@@ -41,12 +41,14 @@
 
     <textarea class="form-control input-lg" id="inputlg" type="text" placeholder="Click here to enter text" rows="5" cols="20"> </textarea>
     <br>
+
     <h3 class="text-info">Upload your notice</h3>
         
         <!--file input example -->
         <span class="control-fileupload">
           <label for="file">Choose a file :</label>
-          <input type="file" id="file">
+          <progress value="0" max="100" id="uploader"></progress>
+          <input type="file" value="upload" id="fileBtn">
         </span>
         <!--./file input example -->
     <br>

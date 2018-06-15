@@ -1,17 +1,6 @@
 var NoticesRef = firebase.database().ref("/Society/services/notices")
 //console.log("hello")
 
-//To separate subject from notice
-
-function separate(txt) {
-	// body...
-	var sub = "";
-	var body = "";
-
-
-
-}
-
 
 // Event listener for Add Member button
 function SmartSociety(){
@@ -48,7 +37,7 @@ function SmartSociety(){
 
 		di.appendChild(subject);
 		di.appendChild(content);
-		
+
 		document.getElementById("myList").appendChild(di);
 
 	});
