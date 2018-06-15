@@ -140,9 +140,9 @@ SmartSociety.prototype.addMember = function(){
 	  // ...
 	});
 	console.log(ifEmailAlreadyExists)
-	ref.push(member)
+	//ref.push(member)
 
-	/*setTimeout(function(){
+	setTimeout(function(){
 		if(ifEmailAlreadyExists!="auth/email-already-in-use"){
 			auth.sendPasswordResetEmail(emailAddress).then(function() {
 			  // Email sent.
@@ -158,7 +158,7 @@ SmartSociety.prototype.addMember = function(){
 			console.log("User exists")
 		}
     
-	}, 5000);*/
+	}, 5000);
 	
 	
 };
