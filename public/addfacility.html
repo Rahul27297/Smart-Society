@@ -126,7 +126,13 @@
 
 </div>
     <!--Facility Addition-->
-    <div class="row">
+
+    <div class="row" style="margin-top: 20px">
+      <div class="col-sm-10">
+        <button type="button" class="btn btn-primary" id="addfacility">Add Facility</button>
+      </div>
+    </div>
+    <div class="row" id="facilityadditionform">
       <div class="col-sm-12 card" id="form-container">
     <div class="card-header">Facility Addition Form </div>
   <div id="member-form">
@@ -134,13 +140,13 @@
    </div>
   <div>
    <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-8">
        <div class="form-group">
         <label for="exampleFormControlInput1">Facility Name: </label>
         <input type="email" class="form-control" id="facilityname" placeholder="Table Tennis">
       </div>
       </div>
-      <div class = "col-sm-5 form-group">
+      <div class = "col-sm-4 form-group">
           <label>Booking requirement:</label>
        <select name="bookingrequirement" class="form-control" id="bookingrequirement">
         <option value="yes">Yes</option>
@@ -177,7 +183,7 @@
 </div>
 
    <div class="form-group row">
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <label>Current Status: </label>
       <select class="form-control" id = "status">
         <option value="usable" selected>Usable</option>
@@ -189,7 +195,7 @@
 
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary" id="addfacility">Add Facility</button>
+      <button type="submit" class="btn btn-primary" id="done">Done</button>
     </div>
   </div>
   
