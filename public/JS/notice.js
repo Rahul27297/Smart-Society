@@ -18,9 +18,9 @@ SmartSociety.prototype.addNotice = function(){
 	var owner = document.getElementById("owner")
 	var admin = document.getElementById("admin")
 	var tenant = document.getElementById("tenant")
-	console.log(owner.checked,tenant.checked,admin.checked)
+	console.log(owner.checked,tenant.checked,admin.checked,subject)
 	var tmplist = [];
-	ref.child("notices/"+subject+"/Description").set(txtarea);
+	ref.child("notices/"+subject+"/Description").set(subject+"!@#"+txtarea);
 	ref.child("notices/"+subject+"/Image").set(false);
 	ref.child("notices/"+subject+"/ReadReceipt").set("No");
 	if(owner.checked){
