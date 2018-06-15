@@ -36,6 +36,8 @@ SmartSociety.prototype.addNotice = function(){
 	console.log(noticenumberInstring);
 	ref.child("notices/"+subject+"/Type").set(tmplist);
 
+	window.alert("Notice Successfully Sent")
+
 
 	//ref.child("notices/"+subject+"/Description").set(txtarea);
 
