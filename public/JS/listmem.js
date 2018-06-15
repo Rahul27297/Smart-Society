@@ -1,9 +1,16 @@
 var MemberRef = firebase.database().ref("/Members")
+var SearchRef = firebase.database().ref("/")
+
 //console.log("hello")
 
 // Event listener for Add Member button
 function SmartSociety(){
+	var membersearchinpbtn = document.getElementById("searchmembers");
+
+	membersearchinpbtn.addEventListener('click',this.searchMember.bind(this));
+
 	var cnt = 0;
+
 	MemberRef.on("child_added", function(data, prevChildKey) {
 		//working member display code 
 	   /*var newMember = data.val();
@@ -46,6 +53,24 @@ function SmartSociety(){
 
 	
 };
+
+SmartSociety.prototype.searchMember = function(){
+
+
+	var query = document.getElementById("membersearchinp").value;
+
+	console.log(query)
+
+	SearchRef.child('Members').orderByChild('Address').equalTo(query).on("value", function(snapshot) {
+	    console.log(snapshot.val());
+	    snapshot.forEach(function(data) {
+	        console.log(data);
+	    });
+	});
+
+
+};
+
 
 
 
