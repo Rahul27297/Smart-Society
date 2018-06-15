@@ -9,9 +9,14 @@ function SmartSociety1(){
 	bookingrequired.style.display = "none";
 	var facilityname = document.getElementById("facilityname");
 	var bookingrequirement = document.getElementById("bookingrequirement");
-	var addfacilitybutton = document.getElementById("addfacility");
+	var donebutton = document.getElementById("done");
+	var addfacilitybtn = document.getElementById("addfacility");
+	var facilityadditionform = document.getElementById("facilityadditionform");
 	var memberform = document.getElementById("memberform");
 	//window.alert(facilityname.value);
+
+	facilityadditionform.style.display = "none";
+
 	bookingrequirement.addEventListener('change',function(){
 		if(facilityname.value != "" && bookingrequirement.value == "yes"){
 			bookingrequired.style.display = "block";
@@ -22,6 +27,11 @@ function SmartSociety1(){
 		else if(bookingrequirement.value == "no"){
 			bookingrequired.style.display = "none";
 		}
+	});
+
+
+	addfacilitybtn.addEventListener('click',function(){
+		facilityadditionform.style.display = "block";
 	});
 
 	ref.on('value',function(snapshot){
@@ -35,7 +45,7 @@ function SmartSociety1(){
 			});
 		})
 
-	addfacility.addEventListener('click',function(){
+	done.addEventListener('click',function(){
 		//bootbox.alert("Facility added successfully");
 		var e = document.getElementById("status");
 		var status = e.options[e.selectedIndex].value;

@@ -51,8 +51,14 @@
   <div class="col-3">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="nav-link active" id="addmember" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">Members</a>
-      <a class="nav-link" id="facility" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-profile" aria-selected="false">Facility</a>
-      <a class="nav-link" id="notices" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Notices</a>
+      <a class="nav-link" data-toggle="collapse"  data-target = "#demo" href="javascript:void(0)" role="tab" aria-controls="v-pills-profile" aria-selected="false">Services</a>
+      <div id="demo" class="collapse">
+      <ul>
+        <li><a href="#">Applications</a></li>
+        <li><a href="#" id="notices">Notices</a></li>
+        <li><a href="#" id="facility">Facilities</a></li>
+      </ul>
+    </div>
     </div>
   </div>
   <div class="col-9" id="displayarea">
