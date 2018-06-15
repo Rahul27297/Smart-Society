@@ -9,10 +9,8 @@ window.onload = function(){
 function SmartSociety(){
 	var addnotice = document.getElementById("addnoticebtn");
 	var viewnotice = document.getElementById("viewnoticebtn");
-	var upload = document.getElementById("addfile");
 
 	addnotice.addEventListener('click',this.addNotice.bind(this));
-	upload.addEventListener('click',this.uploadFile.bind(this));
 
 	var uploader = document.getElementById('uploader');
 	var fileButton = document.getElementById('fileBtn');
@@ -38,7 +36,7 @@ function SmartSociety(){
 
 			function progress(snapshot){
 
-				console.log("hello")
+				//console.log("hello")
 
 				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
 				uploader.value = percentage;
