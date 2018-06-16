@@ -1,5 +1,7 @@
 var ref = firebase.database().ref("/Society/services/");
 var noticeNumber = 0;
+
+//To check if URL to the file is to be set to path in storage or not
 var isFileUploaded = false;
 var URL = false;
 window.onload = function(){

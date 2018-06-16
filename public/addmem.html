@@ -27,12 +27,16 @@
   };
   firebase.initializeApp(config);
 </script> 
+<script type="text/javascript" src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
 </head>
 <body>
   <div class="container" >
     <div class="row">
       <div class="col-sm-12 card" id="form-container">
     <div class="card-header">Member Addition Form  </div>
+
+  
+
   <div id="member-form">
   
     <div class="form-group row">
@@ -117,6 +121,14 @@
 </div>
 </div>
 </div>
+
+
+
+<span class="control-fileupload">
+  <label for="file">Choose a CSV file :</label>
+    <progress value="0" max="100" id="uploader"></progress>
+    <input type="file" value="upload" id="csvBtn">
+</span>
 
 </div>
 <script src="./JS/mem.js"></script>

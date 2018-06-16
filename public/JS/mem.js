@@ -1,3 +1,31 @@
+
+function csvJSON(csv){
+
+  var lines=csv.split("\n");
+
+  var result = [];
+
+  var headers=lines[0].split(",");
+
+  for(var i=1;i<lines.length;i++){
+
+	  var obj = {};
+	  var currentline=lines[i].split(",");
+
+	  for(var j=0;j<headers.length;j++){
+		  obj[headers[j]] = currentline[j];
+	  }
+
+	  result.push(obj);
+
+  }
+  
+  //return result; //JavaScript object
+  return JSON.stringify(result); //JSON
+}
+
+
+
 var Password = {
  
   _pattern : /[a-zA-Z0-9_\-\+\.]/,
@@ -53,6 +81,51 @@ var auth = firebase.auth();
 function SmartSociety(){
 	var addmemberbtn = document.getElementById("addmemberbtn");
 	addmemberbtn.addEventListener('click',this.addMember.bind(this));
+
+	console.log("hello")
+
+	var csvBtn = document.getElementById("csvBtn");
+
+	csvBtn.addEventListener('change',function(e){
+		var file = e.target.files[0];
+		console.log(file.responseText)
+		//console.log(csvJSON(file))
+
+		var storRef = firebase.storage().ref('members/'+file.name);
+		console.log(storRef);
+
+		var task = storRef.put(file);
+
+		task.on('state_changed',
+
+			function progress(snapshot){
+
+				//console.log("hello")
+
+				var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+				uploader.value = percentage;
+				console.log(percentage);
+
+			},
+
+			function error(err){
+
+			},
+
+			function complete(){
+
+			}
+
+
+		)
+
+
+	});
+
+
+
+
+
 };
 
 SmartSociety.prototype.addMember = function(){
